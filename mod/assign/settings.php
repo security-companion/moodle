@@ -141,6 +141,16 @@ if ($ADMIN->fulltree) {
     $setting->set_advanced_flag_options(admin_setting_flag::ENABLED, false);
     $settings->add($setting);
 
+    $name = new lang_string('duedateuntilmidnight', 'mod_assign');
+    $description = new lang_string('duedateuntilmidnight_help', 'mod_assign');
+    $setting = new admin_setting_configcheckbox('assign/duedateuntilmidnight',
+                                                    $name,
+                                                    $description,
+                                                    0);
+    $setting->set_enabled_flag_options(admin_setting_flag::ENABLED, true);
+    $setting->set_advanced_flag_options(admin_setting_flag::ENABLED, false);
+    $settings->add($setting);
+
     $name = new lang_string('cutoffdate', 'mod_assign');
     $description = new lang_string('cutoffdate_help', 'mod_assign');
     $setting = new admin_setting_configduration('assign/cutoffdate',
@@ -148,6 +158,16 @@ if ($ADMIN->fulltree) {
                                                     $description,
                                                     1209600);
     $setting->set_enabled_flag_options(admin_setting_flag::ENABLED, false);
+    $setting->set_advanced_flag_options(admin_setting_flag::ENABLED, false);
+    $settings->add($setting);
+
+    $name = new lang_string('cutoffdateuntilmidnight', 'mod_assign');
+    $description = new lang_string('cutoffdateuntilmidnight_help', 'mod_assign');
+    $setting = new admin_setting_configcheckbox('assign/cutoffdateuntilmidnight',
+                                                    $name,
+                                                    $description,
+                                                    0);
+    $setting->set_enabled_flag_options(admin_setting_flag::ENABLED, true);
     $setting->set_advanced_flag_options(admin_setting_flag::ENABLED, false);
     $settings->add($setting);
 
