@@ -147,8 +147,8 @@ if ($ADMIN->fulltree) {
                                                     $name,
                                                     $description,
                                                     0);
-    $setting->set_enabled_flag_options(admin_setting_flag::ENABLED, true);
     $setting->set_advanced_flag_options(admin_setting_flag::ENABLED, false);
+    $setting->set_locked_flag_options(admin_setting_flag::ENABLED, false);
     $settings->add($setting);
 
     $name = new lang_string('cutoffdate', 'mod_assign');
@@ -167,8 +167,8 @@ if ($ADMIN->fulltree) {
                                                     $name,
                                                     $description,
                                                     0);
-    $setting->set_enabled_flag_options(admin_setting_flag::ENABLED, true);
     $setting->set_advanced_flag_options(admin_setting_flag::ENABLED, false);
+    $setting->set_locked_flag_options(admin_setting_flag::ENABLED, false);
     $settings->add($setting);
 
     $name = new lang_string('enabletimelimit', 'mod_assign');

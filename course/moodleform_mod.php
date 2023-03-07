@@ -1308,7 +1308,7 @@ abstract class moodleform_mod extends moodleform {
         $mform = $this->_form;
         $usermidnight = usergetmidnight(time());
         $isupdate = !empty($this->_cm);
-
+        debugging("settings".print_r($settings));
         foreach ($settings as $name => $value) {
             if (strpos('_', $name) !== false) {
                 continue;
@@ -1318,12 +1318,18 @@ abstract class moodleform_mod extends moodleform {
                 if (!$isupdate) {
                     if ($element->getType() == 'date_time_selector') {
                         $enabledsetting = $name . '_enabled';
+                        $untilmidnightenabled = $name . 'untilmidnight';
                         if (empty($settings->$enabledsetting)) {
                             $mform->setDefault($name, 0);
                         } else {
                             $relativetime = $usermidnight;
                             if (isset($datetimeoffsets[$name])) {
                                 $relativetime = $datetimeoffsets[$name];
+                            }
+                            debugging("name:".$name." relativetime:".$relativetime." settings->name".$settings->$name);
+                            if ((isset($settings->$untilmidnightenabled)) && ($settings->$untilmidnightenabled == 1)) {
+                                debugging("extend until midnight");
+                                $relativetime = $relativetime + 86340;
                             }
                             $mform->setDefault($name, $relativetime + $settings->$name);
                         }
@@ -1342,6 +1348,7 @@ abstract class moodleform_mod extends moodleform {
             }
         }
     }
+
 
     /**
      * Allows modules to modify the data returned by form get_data().
