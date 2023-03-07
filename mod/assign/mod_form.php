@@ -103,8 +103,6 @@ class mod_assign_mod_form extends moodleform_mod {
         $mform->addElement('date_time_selector', 'cutoffdate', $name, array('optional'=>true));
         $mform->addHelpButton('cutoffdate', 'cutoffdate', 'assign');
 
-        $duedateuntilmidnight = get_config('assign', 'duedateuntilmidnight');
-        $cutoffdateuntilmidnight = get_config('assign', 'cutoffdateuntilmidnight');
 
         $name = get_string('gradingduedate', 'assign');
         $mform->addElement('date_time_selector', 'gradingduedate', $name, array('optional' => true));

@@ -1308,7 +1308,7 @@ abstract class moodleform_mod extends moodleform {
         $mform = $this->_form;
         $usermidnight = usergetmidnight(time());
         $isupdate = !empty($this->_cm);
-        debugging("settings".print_r($settings));
+
         foreach ($settings as $name => $value) {
             if (strpos('_', $name) !== false) {
                 continue;
@@ -1326,9 +1326,8 @@ abstract class moodleform_mod extends moodleform {
                             if (isset($datetimeoffsets[$name])) {
                                 $relativetime = $datetimeoffsets[$name];
                             }
-                            debugging("name:".$name." relativetime:".$relativetime." settings->name".$settings->$name);
                             if ((isset($settings->$untilmidnightenabled)) && ($settings->$untilmidnightenabled == 1)) {
-                                debugging("extend until midnight");
+                                // add additional time of 23 hours and 59 minutes
                                 $relativetime = $relativetime + 86340;
                             }
                             $mform->setDefault($name, $relativetime + $settings->$name);
